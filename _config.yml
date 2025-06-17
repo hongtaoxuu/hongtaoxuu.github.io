@@ -195,6 +195,7 @@ exclude:
   - _pages/teaching.md
   - _pages/projects.md
   - _pages/profiles.md
+  — _news/announcement_without_inline_backup.md
 keep_files:
   - CNAME
   - .nojekyll
