@@ -269,8 +269,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Hongtao]
-  first_name: [Xu, X.]
+  last_name: [Hongtao, Xu, X.]
+  first_name: [Hongtao, Xu, X.]
 
   style: apa
   locale: en
