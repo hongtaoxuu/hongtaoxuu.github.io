@@ -2,7 +2,8 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Ph.D student, University of Chinese Academy of Sciences (UCAS), Institute of Computing Technology (ICT).
+# subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
 profile:
   align: right

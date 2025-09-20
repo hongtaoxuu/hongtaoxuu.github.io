@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One Paper is accepted by ISPA'25 (IEEE International Symposium on Parallel and Distributed Processing with Applications)! See you in Shenyang, China!
+One Paper is accepted by ISPA'25 (IEEE International Symposium on Parallel and Distributed Processing with Applications)! See you in Shenyang, China 🇨🇳❄️!

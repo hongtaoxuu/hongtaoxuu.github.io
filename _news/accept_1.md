@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One Paper is accepted by ICML'25! :sparkles: 
+One Paper is accepted by ICML'25! :sparkles: See you in Vancouver, Canada 🇨🇦🍁!

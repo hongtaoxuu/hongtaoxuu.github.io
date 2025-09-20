@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One Paper is accepted by NeurIPS'25! See you in San Diego, USA 🇺🇸🌴!
+One Paper is accepted by NeurIPS'25! See you in San Diego, USA 🇺🇸🏖️!
