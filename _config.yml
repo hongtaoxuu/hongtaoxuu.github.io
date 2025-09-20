@@ -191,7 +191,7 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
-  - _pages/repositories.md #new add
+  - _pages/repositories.md #  add
   - _pages/teaching.md
   - _pages/projects.md
   - _pages/profiles.md
