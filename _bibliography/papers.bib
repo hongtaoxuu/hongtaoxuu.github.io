@@ -1,5 +1,19 @@
 ---
 ---
+@article{Skrull,
+  abbr={NeurIPS},
+  title={Skrull: Towards Efficient Long Context Fine-tuning through Dynamic Data Scheduling}, 
+  author={Hongtao Xu and Wenting Shen and Yuanxin Wei and Ang Wang and Guo Runfan and Tianxing Wang and Yong Li and Mingzhen Li and Weile Jia},
+  year={2025},
+  eprint={2505.19609},
+  series={ICML'25},
+  url={https://arxiv.org/abs/2505.19609}, 
+  selected={true},
+  abstract={Long-context supervised fine-tuning (Long-SFT) plays a vital role in enhancing the performance of large language models (LLMs) on long-context tasks. To smoothly adapt LLMs to long-context scenarios, this process typically entails training on mixed datasets containing both long and short sequences. However, this heterogeneous sequence length distribution poses significant challenges for existing training systems, as they fail to simultaneously achieve high training efficiency for both long and short sequences, resulting in sub-optimal end-to-end system performance in Long-SFT. In this paper, we present a novel perspective on data scheduling to address the challenges posed by the heterogeneous data distributions in Long-SFT. We propose Skrull, a dynamic data scheduler specifically designed for efficient long-SFT. Through dynamic data scheduling, Skrull balances the computation requirements of long and short sequences, improving overall training efficiency. Furthermore, we formulate the scheduling process as a joint optimization problem and thoroughly analyze the trade-offs involved. Based on those analysis, Skrull employs a lightweight scheduling algorithm to achieve near-zero cost online scheduling in Long-SFT. Finally, we implement Skrull upon DeepSpeed, a state-of-the-art distributed training system for LLMs. Experimental results demonstrate that Skrull outperforms DeepSpeed by 3.76x on average (up to 7.54x) in real-world long-SFT scenarios.
+  },
+  pdf={Skrull.pdf},
+  preview={Skrull_overview.jpg},
+}
 
 @article{chunkflow,
   abbr={ICML},
@@ -17,20 +31,6 @@
   preview={chunkflow_overview.jpg},
 }
 
-@misc{Skrull,
-  abbr={NeurIPS},
-  title={Skrull: Towards Efficient Long Context Fine-tuning through Dynamic Data Scheduling}, 
-  author={Hongtao Xu and Wenting Shen and Yuanxin Wei and Ang Wang and Guo Runfan and Tianxing Wang and Yong Li and Mingzhen Li and Weile Jia},
-  year={2025},
-  eprint={2505.19609},
-  series={ICML'25},
-  url={https://arxiv.org/abs/2505.19609}, 
-  selected={true},
-  abstract={Long-context supervised fine-tuning (Long-SFT) plays a vital role in enhancing the performance of large language models (LLMs) on long-context tasks. To smoothly adapt LLMs to long-context scenarios, this process typically entails training on mixed datasets containing both long and short sequences. However, this heterogeneous sequence length distribution poses significant challenges for existing training systems, as they fail to simultaneously achieve high training efficiency for both long and short sequences, resulting in sub-optimal end-to-end system performance in Long-SFT. In this paper, we present a novel perspective on data scheduling to address the challenges posed by the heterogeneous data distributions in Long-SFT. We propose Skrull, a dynamic data scheduler specifically designed for efficient long-SFT. Through dynamic data scheduling, Skrull balances the computation requirements of long and short sequences, improving overall training efficiency. Furthermore, we formulate the scheduling process as a joint optimization problem and thoroughly analyze the trade-offs involved. Based on those analysis, Skrull employs a lightweight scheduling algorithm to achieve near-zero cost online scheduling in Long-SFT. Finally, we implement Skrull upon DeepSpeed, a state-of-the-art distributed training system for LLMs. Experimental results demonstrate that Skrull outperforms DeepSpeed by 3.76x on average (up to 7.54x) in real-world long-SFT scenarios.
-  },
-  pdf={Skrull.pdf},
-  preview={Skrull_overview.jpg},
-}
 
 @article{xu2025largescaleneuralnetworkquantum,
   abbr={ISPA},
