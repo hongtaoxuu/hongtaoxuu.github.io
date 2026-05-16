@@ -18,23 +18,19 @@
 - title: industry experience
   type: time_table
   contents:
-    - title: Research Intern
-      institution: ByteDance Seed
+    - title: ByteDance Seed, Research Intern
       year: 2026.04 - now
       description:
         - VLM/LLM pre-training infrastructure.
-    - title: Research Intern
-      institution: Meituan LongCat
+    - title: Meituan LongCat, Research Intern
       year: 2025.09 - 2026.04
       description:
         - Algorithm strategy for long-context LLM training.
-    - title: Research Intern
-      institution: Alibaba Cloud PAI (now Tongyi Lab)
+    - title: Alibaba Cloud PAI (now Tongyi Lab), Research Intern
       year: 2024.12 - 2025.07
       description:
         - Training infrastructure for Qwen and Wan.
-    - title: Summer Intern
-      institution: Alibaba Holding Group
+    - title: Alibaba Holding Group, Summer Intern
       year: 2024.06 - 2024.08
       description:
         - LLM training infrastructure.

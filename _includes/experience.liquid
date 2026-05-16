@@ -5,12 +5,12 @@
       <ul class="card-text font-weight-light list-group list-group-flush">
         {% for content in entry.contents %}
           <li class="list-group-item py-2">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start">
+            <div class="d-flex flex-row justify-content-between align-items-baseline">
               {% if content.title %}
-                <h6 class="title font-weight-bold mb-1">{{ content.title }}</h6>
+                <h6 class="title font-weight-bold mb-1 pr-2">{{ content.title }}</h6>
               {% endif %}
               {% if content.year %}
-                <span class="text-muted text-nowrap ml-md-3">{{ content.year }}</span>
+                <span class="text-muted text-nowrap ml-3">{{ content.year }}</span>
               {% endif %}
             </div>
             {% if content.institution %}
