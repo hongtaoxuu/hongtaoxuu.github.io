@@ -2,6 +2,14 @@
  * CV shared styles
  *****************************/
 
+.experience a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 div.container-link-button {
   margin-right: 0.5rem;
 }
