@@ -1,0 +1,39 @@
+# Used by _pages/experience.md.
+# Each top-level entry becomes one card on the /experience/ page.
+# `type: time_table` renders the entries below using _includes/cv/time_table.liquid.
+
+- title: Education
+  type: time_table
+  contents:
+    - title: Ph.D. Candidate in Computer Science
+      institution: <a href="https://www.ict.ac.cn/" target="_blank">Institute of Computing Technology (ICT), CAS</a> & <a href="https://www.ucas.ac.cn/" target="_blank">University of Chinese Academy of Sciences (UCAS)</a>
+      year: 2024.12 - now
+      description:
+        - Joint Ph.D. program with ICT, CAS and the School of Advanced Interdisciplinary Sciences, UCAS.
+        - "Advisor: <a href='https://people.ucas.ac.cn/~jiaweile' target='_blank'>Prof. Weile Jia</a>."
+        - "Research interests: machine learning systems, AI for scientific computing, and algorithm-system co-design."
+    - title: Master Student in Computer Science <small>(admitted without entrance examination)</small>
+      institution: <a href="https://www.ict.ac.cn/" target="_blank">Institute of Computing Technology (ICT), CAS</a>
+      year: 2022.09 - 2024.12
+    - title: B.Eng. in Computer Science
+      institution: <a href="https://www.sdu.edu.cn/" target="_blank">Shandong University (SDU)</a>
+      year: 2018.09 - 2022.06
+
+- title: Industry
+  type: time_table
+  contents:
+    - title: Research Intern
+      institution: ByteDance Seed
+      year: 2026.04 - Now
+      description:
+        - "VLM/LLM Pre-training Infrastructure."
+    - title: Research Intern
+      institution: Meituan LongCat
+      year: 2025.09 - 2026.04
+      description:
+        - "Algorithm Strategy for Long-context LLM Training."
+    - title: Research Intern
+      institution: Alibaba Cloud PAI (now Tongyi Lab)
+      year: 2024.12 - 2025.07
+      description:
+        - "Training Infrastructure for Qwen and Wan."
