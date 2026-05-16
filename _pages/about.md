@@ -35,7 +35,7 @@ latest_posts:
 
 His research interests focus on the intersection of **machine learning systems**, **artificial intelligence** and **scientific computing**, with a particular interest in algorithm-system co-design.
 
-He is expected to graduate in 2027 and is currently on the job market. He is always open to collaborations and full-time opportunities — please feel free to reach out to him via xuhongtao22@mails.ucas.ac.cn.
+He is expected to graduate in 2027 and is <em><strong style="color: #c0392b;">currently on the job market</strong></em>. He is always open to collaborations and full-time opportunities — please feel free to reach out to him via xuhongtao22@mails.ucas.ac.cn.
 
 <!-- Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 

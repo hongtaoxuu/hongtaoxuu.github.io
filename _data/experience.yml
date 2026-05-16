@@ -6,10 +6,9 @@
   type: time_table
   contents:
     - title: Ph.D. Candidate in Computer Science
-      institution: <a href="https://www.ict.ac.cn/" target="_blank">Institute of Computing Technology (ICT), CAS</a>
-      institution: <a href="https://www.ucas.ac.cn/" target="_blank">School of Advanced Interdisciplinary Sciences, University of Chinese Academy of Sciences (UCAS)</a>
+      institution: <a href="https://www.ucas.ac.cn/" target="_blank">SAIS, University of Chinese Academy of Sciences (UCAS)</a> & <a href="https://www.ict.ac.cn/" target="_blank">ICT, CAS</a>
       year: 2024.12 - now
-    - title: Master Student in Computer Science <small>(admitted without entrance examination)</small>
+    - title: Master Student in Computer Science
       institution: <a href="https://www.ict.ac.cn/" target="_blank">Institute of Computing Technology (ICT), CAS</a>
       year: 2022.09 - 2024.12
     - title: B.Eng. in Computer Science
@@ -20,22 +19,14 @@
   type: time_table
   contents:
     - title: Research Intern
-      institution: ByteDance Seed
+      institution: ByteDance Seed. VLM/LLM pre-training infrastructure.
       year: 2026.04 - now
-      description:
-        - "VLM/LLM pre-training infrastructure."
     - title: Research Intern
-      institution: Meituan LongCat
+      institution: Meituan LongCat. Algorithm strategy for long-context LLM training.
       year: 2025.09 - 2026.04
-      description:
-        - "Algorithm strategy for long-context LLM training."
     - title: Research Intern
-      institution: Alibaba Cloud PAI (now Tongyi Lab)
+      institution: Alibaba Cloud PAI (now Tongyi Lab). Training infrastructure for Qwen and Wan.
       year: 2024.12 - 2025.07
-      description:
-        - "Training infrastructure for Qwen and Wan."
     - title: Summer Intern
-      institution: Alibaba Holding Group
+      institution: Alibaba Holding Group. LLM training infrastructure.
       year: 2024.06 - 2024.08
-      description:
-        - "LLM training infrastructure."
