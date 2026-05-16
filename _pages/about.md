@@ -31,7 +31,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-**Hongtao** is a second-year PhD student at the [University of Chinese Academy of Sciences (UCAS)](https://www.ucas.ac.cn/), advised by [Prof. Weile Jia](https://people.ucas.ac.cn/~jiaweile). He earned his bachelor's degree from [Shandong University (SDU)](https://www.sdu.edu.cn/) in June 2022. In the same year, he was admitted to pursue his master's study without entrance examination at the [Institute of Computing Technology (ICT)](https://www.ict.ac.cn/), [Chinese Academy of Sciences (CAS)](https://www.cas.cn/). In December 2024, he was admitted to pursue his doctor's degree in a joint PhD program with [Institute of Computing Technology, CAS](https://www.ict.ac.cn/) and [School of Advanced Interdisciplinary Sciences, UCAS](https://www.ucas.ac.cn/).
+**Hongtao** is a second-year PhD student at the [University of Chinese Academy of Sciences (UCAS)](https://www.ucas.ac.cn/), advised by [Prof. Weile Jia](https://people.ucas.ac.cn/~jiaweile). He earned his bachelor's degree from [Shandong University (SDU)](https://www.sdu.edu.cn/) in June 2022. 
+<!-- In the same year, he was admitted to pursue his master's study without entrance examination at the [Institute of Computing Technology (ICT)](https://www.ict.ac.cn/), [Chinese Academy of Sciences (CAS)](https://www.cas.cn/). In December 2024, he was admitted to pursue his doctor's degree in a joint PhD program with [Institute of Computing Technology, CAS](https://www.ict.ac.cn/) and [School of Advanced Interdisciplinary Sciences, UCAS](https://www.ucas.ac.cn/). -->
 
 His research interests focus on the intersection of **machine learning systems**, **artificial intelligence** and **scientific computing**, with a particular interest in algorithm-system co-design.
 
