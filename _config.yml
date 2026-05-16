@@ -183,6 +183,7 @@ exclude:
   - Gemfile.lock
   - INSTALL.md
   - LICENSE
+  - MAINTAINING.md
   - lighthouse_results/
   - package.json
   - package-lock.json
