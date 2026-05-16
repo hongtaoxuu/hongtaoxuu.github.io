@@ -1,14 +1,10 @@
-<div class="cv">
+<div class="experience">
   {% for entry in site.data.experience %}
-    <div class="card mt-3 p-3">
-      <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
-      <div>
-        {% if entry.type == 'time_table' %}
-          {% include cv/time_table.liquid %}
-        {% else %}
-          {{ entry.contents }}
-        {% endif %}
-      </div>
-    </div>
+    <h2>{{ entry.title }}</h2>
+    {% if entry.type == 'time_table' %}
+      {% include cv/time_table.liquid %}
+    {% else %}
+      {{ entry.contents }}
+    {% endif %}
   {% endfor %}
 </div>
