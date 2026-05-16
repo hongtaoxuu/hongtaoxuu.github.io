@@ -177,7 +177,35 @@ icon: 🍑   # 直接用 emoji 当 favicon
 
 **展示开关**：在 `_pages/about.md` 顶部已有 `experience.enabled: true`；改成 `false` 即可临时把整段 section 从首页隐藏（不会删数据）。
 
-**顺序**：about 首页 section 顺序由 `_layouts/about.liquid` 控制，目前是 `news → experience → selected publications`。需要调整就改这个 layout 文件里几个 `{% if %}` 块的相对位置。
+**顺序**：about 首页 section 顺序由 `_layouts/about.liquid` 控制，目前是 `news → experience → selected publications → honors and service`。需要调整就改这个 layout 文件里几个 `{% if %}` 块的相对位置。
+
+### 2.5 更新 honors and service（about 首页末尾的 h2）
+
+这一栏（获奖 + 审稿服务）是直接 **hardcode 在 `_layouts/about.liquid`** 里的，不走 `_data/experience.yml`，因为内容少、又要放到 selected publications 之后（experience include 默认渲染在 papers 之前，不能直接复用）。
+
+**编辑位置**：`_layouts/about.liquid`，找 `<!-- Honors and service -->` 注释块（在 selected papers 块和 social 块之间）：
+
+```liquid
+<!-- Honors and service (hardcoded; edit items inline here) -->
+<h2>honors and service</h2>
+<ul>
+  <li><strong>20XX</strong> &nbsp;·&nbsp; National Scholarship for Graduate Students (研究生国家奖学金)</li>
+  <li><strong>20XX</strong> &nbsp;·&nbsp; Reviewer for [Conference Name]</li>
+</ul>
+```
+
+**新增一条**：往 `<ul>` 里加 `<li>` 就行，例如：
+
+```html
+<li><strong>2026</strong> &nbsp;·&nbsp; Reviewer for NeurIPS, ICML</li>
+<li><strong>2024</strong> &nbsp;·&nbsp; Outstanding Graduate of Shandong University</li>
+```
+
+格式约定：`<strong>年份</strong> &nbsp;·&nbsp; 条目内容`，` · ` 是中点分隔符。
+
+**临时隐藏整段**：把这 6 行包一个注释 `{% comment %} ... {% endcomment %}` 即可，或者直接删掉。
+
+> 如果以后条目越来越多（>5 条），建议升级到「数据驱动」：在 `_data/` 加一个 `honors.yml`，用 `_includes/cv/time_table.liquid` 渲染，结构和 `_data/experience.yml` 的 `year + items` 一致。届时再来扩展。
 
 ---
 
