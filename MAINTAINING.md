@@ -10,13 +10,14 @@
 | 路径 | 作用 |
 | --- | --- |
 | `_config.yml` | 全站总配置（名字、URL、导航、主题、Jekyll 插件、scholar 设置、Jekyll exclude 列表等）。**几乎所有“开关”都在这里。** |
-| `_pages/` | 每个一级页面的入口 Markdown。当前启用的有 `about.md`（首页 `/`）、`publications.md`、`news.md`、`cv.md`、`blog.md`、`books.md`、`404.md`。`repositories.md` / `projects.md` / `profiles.md` / `teaching.md` 默认已在 `_config.yml` 的 `exclude` 中关闭。 |
-| `_bibliography/papers.bib` | **论文数据库**，BibTeX 格式。`/publications/` 页面 和 about 首页的“selected papers” 都从这里生成。 |
+| `_pages/` | 每个一级页面的入口 Markdown。当前实际启用进导航栏的只有 `about.md`（首页 `/`）和 `publications.md`。其余如 `news.md`、`404.md` 仍存在但不在 nav；`cv.md` / `blog.md` / `books.md` / `dropdown.md` / `repositories.md` / `projects.md` / `profiles.md` / `teaching.md` 都已在 `_config.yml` 的 `exclude` 中关闭。 |
+| `_bibliography/papers.bib` | **论文数据库**，BibTeX 格式。`/publications/` 页面 和 about 首页的“selected publications” 都从这里生成。 |
 | `_bibliography/backup.bib` | 论文备份/草稿，已在 `_config.yml` exclude 中关闭，不会构建。 |
 | `_news/` | **news 条目**，一个 `.md` 文件 = 一条 news。`/news/` 页面与 about 首页公告条会自动列出。 |
-| `_data/` | 结构化数据：`socials.yml`（社交图标）、`cv.yml`（CV 内容）、`coauthors.yml`、`venues.yml`、`repositories.yml`。 |
-| `_includes/` | 公共片段（`header.liquid`、`footer.liquid`、`news.liquid`、`selected_papers.liquid`、`social.liquid` 等）。 |
-| `_layouts/` | 页面模板（`about.liquid` 即首页骨架；`bib.liquid` 渲染论文条目；`cv.liquid`、`page.liquid`、`post.liquid` 等）。 |
+| `_data/experience.yml` | **经历数据**（Education / Industry Experience / Honors & Awards 等卡片）。被 about 页通过 `_includes/experience.liquid` 渲染成一个 section。 |
+| `_data/` 其他 | `socials.yml`（社交图标）、`coauthors.yml`、`venues.yml`、`repositories.yml`、`cv.yml`（Einstein 示例 CV，未启用）。 |
+| `_includes/` | 公共片段（`header.liquid`、`footer.liquid`、`news.liquid`、`selected_papers.liquid`、`experience.liquid`、`social.liquid` 等）。 |
+| `_layouts/` | 页面模板（`about.liquid` 即首页骨架，依次渲染 about 正文 / news / experience / selected publications；`bib.liquid` 渲染论文条目；`page.liquid`、`post.liquid` 等）。 |
 | `_posts/` | 博客文章（如果启用 blog 才会显示在 `/blog/`）。当前主要是主题自带示例文章。 |
 | `_projects/` `_books/` | 项目卡片 / 书架；当前 `_pages/projects.md` 已 exclude，不会显示，但文件仍保留可随时启用。 |
 | `_sass/`、`assets/css/` | 样式表（SCSS 编译后即站点 CSS）。 |
@@ -142,13 +143,61 @@ icon: 🍑   # 直接用 emoji 当 favicon
 
 - Markdown 正文里插图：建议用 `{% include figure.liquid path="assets/img/xx.jpg" class="img-fluid" %}`，会自动响应式 + 懒加载。
 
+### 2.4 更新经历（about 首页的 experience section）
+
+首页 `about` 上的 `experience` section 由 `_data/experience.yml` 驱动，被 `_includes/experience.liquid` 渲染为若干张卡片（Education / Industry Experience / Honors & Awards 等）。
+
+**编辑方法**：直接修改 `_data/experience.yml`，文件结构为顶层一个数组，每个元素是一张卡片：
+
+```yaml
+- title: Education                # 卡片标题（h3）
+  type: time_table                # 渲染方式；time_table 走 _includes/cv/time_table.liquid
+  contents:
+    - title: Ph.D. Candidate in Computer Science
+      institution: <a href="https://www.ict.ac.cn/" target="_blank">ICT, CAS</a> & UCAS
+      year: 2024.09 - now
+      description:                # 可选；支持 HTML
+        - Joint Ph.D. program ...
+        - "Advisor: <a href='...'>Prof. Weile Jia</a>."
+```
+
+**新增一类经历**（例如加一张 "Honors & Awards" 卡片）：在 `_data/experience.yml` 末尾追加：
+
+```yaml
+- title: Honors & Awards
+  type: time_table
+  contents:
+    - year: 2024
+      items:
+        - National Scholarship for Graduate Students
+    - year: 2022
+      items:
+        - Outstanding Graduate of Shandong University
+```
+
+**展示开关**：在 `_pages/about.md` 顶部已有 `experience.enabled: true`；改成 `false` 即可临时把整段 section 从首页隐藏（不会删数据）。
+
+**顺序**：about 首页 section 顺序由 `_layouts/about.liquid` 控制，目前是 `news → experience → selected publications`。需要调整就改这个 layout 文件里几个 `{% if %}` 块的相对位置。
+
 ---
 
 ## 3. 启用/关闭一个页面
 
-显示与否由 `_config.yml` 的 `exclude:` 列表控制。当前已**关闭**：`repositories.md`、`teaching.md`、`projects.md`、`profiles.md`、`announcement_without_inline_backup.md`、`backup.bib`。
+显示与否由 `_config.yml` 的 `exclude:` 列表控制。当前已**关闭**（都是 al-folio 主题自带的示例页）：
+
+- `_pages/repositories.md`、`_pages/teaching.md`、`_pages/projects.md`、`_pages/profiles.md`
+- `_pages/cv.md`（Einstein 示例 CV；目前用 about 首页的 experience section 替代独立 CV 页）
+- `_pages/blog.md`（博客入口）、`_pages/dropdown.md`（导航栏的 submenus 下拉）、`_pages/books.md`（书架）
+- `_news/announcement_without_inline_backup.md`、`_bibliography/backup.bib`
 
 要打开任一页面：在 `_config.yml` 的 `exclude:` 中删掉对应行，并确认页面 frontmatter 里 `nav: true`（出现在导航栏）和 `nav_order: N`（顺序）。
+
+### 以后想开博客？
+
+1. 把 `_posts/` 目录下所有 `2015-*` ~ `2025-*` 的**主题示例文章**删掉（除非你想保留作为格式参考）。
+2. 写你自己的博文：在 `_posts/` 新建 `YYYY-MM-DD-标题.md`，frontmatter 参考剩余的示例文件即可。
+3. 在 `_config.yml` 的 `exclude:` 列表里删掉 `- _pages/blog.md` 这一行。
+4. （可选）如果想保留导航栏右侧的 `submenus` 下拉，再删掉 `- _pages/dropdown.md` 和 `- _pages/books.md`。
 
 ---
 

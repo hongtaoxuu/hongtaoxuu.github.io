@@ -56,6 +56,12 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
+    <!-- Experience -->
+    {% if page.experience and page.experience.enabled %}
+      <h2>experience</h2>
+      {% include experience.liquid %}
+    {% endif %}
+
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
