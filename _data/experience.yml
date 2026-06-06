@@ -19,7 +19,7 @@
   type: time_table
   contents:
     - title: ByteDance Seed, Research Intern
-      year: 2026.04 - now
+      year: 2026.05 - now
       description:
         - VLM/LLM pre-training infrastructure.
     - title: Meituan LongCat, Research Intern

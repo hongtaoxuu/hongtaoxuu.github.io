@@ -14,10 +14,10 @@
 | `_bibliography/papers.bib` | **论文数据库**，BibTeX 格式。`/publications/` 页面 和 about 首页的“selected publications” 都从这里生成。 |
 | `_bibliography/backup.bib` | 论文备份/草稿，已在 `_config.yml` exclude 中关闭，不会构建。 |
 | `_news/` | **news 条目**，一个 `.md` 文件 = 一条 news。`/news/` 页面与 about 首页公告条会自动列出。 |
-| `_data/experience.yml` | **经历数据**（Education / Industry Experience / Honors & Awards 等卡片）。被 about 页通过 `_includes/experience.liquid` 渲染成一个 section。 |
+| `_data/experience.yml` | **经历数据**（education experience / industry experience 卡片）。被 about 页通过 `_includes/experience.liquid` 渲染成一个 section。注意：奖项 / 审稿服务**不在这个文件**，见 §2.5。 |
 | `_data/` 其他 | `socials.yml`（社交图标）、`coauthors.yml`、`venues.yml`、`repositories.yml`、`cv.yml`（Einstein 示例 CV，未启用）。 |
 | `_includes/` | 公共片段（`header.liquid`、`footer.liquid`、`news.liquid`、`selected_papers.liquid`、`experience.liquid`、`social.liquid` 等）。 |
-| `_layouts/` | 页面模板（`about.liquid` 即首页骨架，依次渲染 about 正文 / news / experience / selected publications；`bib.liquid` 渲染论文条目；`page.liquid`、`post.liquid` 等）。 |
+| `_layouts/` | 页面模板（`about.liquid` 即首页骨架，依次渲染 about 正文 / news / experience / selected publications / honors and service；`bib.liquid` 渲染论文条目；`page.liquid`、`post.liquid` 等）。 |
 | `_posts/` | 博客文章（如果启用 blog 才会显示在 `/blog/`）。当前主要是主题自带示例文章。 |
 | `_projects/` `_books/` | 项目卡片 / 书架；当前 `_pages/projects.md` 已 exclude，不会显示，但文件仍保留可随时启用。 |
 | `_sass/`、`assets/css/` | 样式表（SCSS 编译后即站点 CSS）。 |
@@ -161,19 +161,18 @@ icon: 🍑   # 直接用 emoji 当 favicon
         - "Advisor: <a href='...'>Prof. Weile Jia</a>."
 ```
 
-**新增一类经历**（例如加一张 "Honors & Awards" 卡片）：在 `_data/experience.yml` 末尾追加：
+**新增一类经历**（例如以后想加一张 "Teaching" 或 "Selected Talks" 卡片）：在 `_data/experience.yml` 末尾追加一个新的顶层条目即可：
 
 ```yaml
-- title: Honors & Awards
+- title: selected talks       # 卡片标题，统一用小写以和现有两张卡风格一致
   type: time_table
   contents:
-    - year: 2024
-      items:
-        - National Scholarship for Graduate Students
-    - year: 2022
-      items:
-        - Outstanding Graduate of Shandong University
+    - title: Talk title here
+      institution: Venue / host
+      year: 2026.05
 ```
+
+> **注意：奖项和审稿服务不要写在这里。**它们目前 hardcode 在 `_layouts/about.liquid` 里（见 §2.5），原因是要放到 selected publications **之后**，而 experience section 默认渲染在 selected publications **之前**，结构上不在一处。
 
 **展示开关**：在 `_pages/about.md` 顶部已有 `experience.enabled: true`；改成 `false` 即可临时把整段 section 从首页隐藏（不会删数据）。
 
@@ -183,25 +182,23 @@ icon: 🍑   # 直接用 emoji 当 favicon
 
 这一栏（获奖 + 审稿服务）是直接 **hardcode 在 `_layouts/about.liquid`** 里的，不走 `_data/experience.yml`，因为内容少、又要放到 selected publications 之后（experience include 默认渲染在 papers 之前，不能直接复用）。
 
-**编辑位置**：`_layouts/about.liquid`，找 `<!-- Honors and service -->` 注释块（在 selected papers 块和 social 块之间）：
+**编辑位置**：`_layouts/about.liquid`，找 `<!-- Honors and service -->` 注释块（在 selected papers 块和 social 块之间）。当前长这样：
 
 ```liquid
 <!-- Honors and service (hardcoded; edit items inline here) -->
 <h2>honors and service</h2>
 <ul>
-  <li><strong>20XX</strong> &nbsp;·&nbsp; National Scholarship for Graduate Students (研究生国家奖学金)</li>
-  <li><strong>20XX</strong> &nbsp;·&nbsp; Reviewer for [Conference Name]</li>
+  <li><strong>2026</strong> &nbsp;·&nbsp; President Award of the Chinese Academy of Sciences &mdash; Excellence <small>(top 0.7%, ...)</small></li>
+  <li><strong>2025</strong> &nbsp;·&nbsp; National Scholarship for Doctoral Students</li>
+  <li><strong>Academic Service</strong> &nbsp;·&nbsp; Reviewer for ICML'26, NeurIPS'26</li>
 </ul>
 ```
 
-**新增一条**：往 `<ul>` 里加 `<li>` 就行，例如：
+**新增一条**：往 `<ul>` 里加 `<li>` 就行，按时间倒序（最新的放最上面）。格式约定：
 
-```html
-<li><strong>2026</strong> &nbsp;·&nbsp; Reviewer for NeurIPS, ICML</li>
-<li><strong>2024</strong> &nbsp;·&nbsp; Outstanding Graduate of Shandong University</li>
-```
-
-格式约定：`<strong>年份</strong> &nbsp;·&nbsp; 条目内容`，` · ` 是中点分隔符。
+- 奖项：`<li><strong>年份</strong> &nbsp;·&nbsp; 奖项全称 <small>(可选的简短补充)</small></li>`
+- 服务：`<li><strong>Academic Service</strong> &nbsp;·&nbsp; 描述</li>` （已有那条直接续写新会议即可，例如 `Reviewer for ICML'26, NeurIPS'26, ICLR'27`）
+- ` · ` 用 `&nbsp;·&nbsp;` 写出来；破折号用 `&mdash;`（即 `—`）；额外说明（如 "top 0.7%"）用 `<small>...</small>` 包成小字。
 
 **临时隐藏整段**：把这 6 行包一个注释 `{% comment %} ... {% endcomment %}` 即可，或者直接删掉。
 
