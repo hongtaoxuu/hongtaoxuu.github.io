@@ -53,6 +53,50 @@ body.sticky-bottom-footer {
   border-color: var(--global-divider-color);
 }
 
+.personal-mottos {
+  margin-top: 2.5rem;
+  padding: 2rem 1rem 1rem;
+  border-top: 1px solid var(--global-divider-color);
+  text-align: center;
+
+  .mission-motto {
+    max-width: 38rem;
+    margin: 0 auto 1.75rem;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.6;
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  figcaption,
+  .motto-meaning {
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+  }
+
+  .motto-values {
+    margin-bottom: 0.4rem;
+    color: var(--global-theme-color);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .motto-meaning {
+    margin-bottom: 0;
+  }
+}
+
 // TODO: redefine content layout.
 
 /******************************************************************************
