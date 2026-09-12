@@ -1,6 +1,8 @@
-{% assign img_path = include.path | remove: '.jpg' | remove: '.jpeg' | remove: '.png' | remove: '.tiff' | remove: '.gif' %}
 {% assign parts = include.path | split: '.' %}
-{% assign ext = parts.last %}
+{% assign suffix = parts.last | prepend: '.' %}
+{% assign stem_length = include.path.size | minus: suffix.size %}
+{% assign img_path = include.path | slice: 0, stem_length %}
+{% assign ext = parts.last | downcase %}
 
 <figure
   {% if include.slot %}
@@ -18,7 +20,7 @@
         <source
           class="responsive-img-srcset"
           {% if ext == 'gif' or ext == 'jpeg' or ext == 'jpg' or ext == 'png' or ext == 'tiff' %}
-            srcset="{% for i in site.imagemagick.widths %}{{ img_path | relative_url }}-{{ i }}.webp {{ i }}w,{% endfor %}"
+            srcset="{% for i in site.imagemagick.widths %}{{ img_path | relative_url }}-{{ i }}.webp {{ i }}w{% unless forloop.last %},{% endunless %}{% endfor %}"
             type="image/webp"
           {% else %}
             srcset="{{ include.path | relative_url }}"
@@ -38,13 +40,9 @@
       {% endif %}
       {% if include.width %}
         width="{{ include.width }}"
-      {% else %}
-        width="100%"
       {% endif %}
       {% if include.height %}
         height="{{ include.height }}"
-      {% else %}
-        height="auto"
       {% endif %}
       {% if include['min-width'] or include['min-height'] or include['max-width'] or include['max-height'] %}
         style="
@@ -63,20 +61,21 @@
         "
       {% endif %}
       {% if include.alt %}
-        alt="{{ include.alt }}"
+        alt="{{ include.alt | escape }}"
       {% endif %}
       {% if include.title %}
         title="{{ include.title }}"
       {% endif %}
       {% if include.zoomable %}
         data-zoomable
+        data-zoom-src="{{ include.path | relative_url }}"
       {% endif %}
       {% if include.loading %}
         loading="{{ include.loading }}"
       {% elsif site.lazy_loading_images %}
         loading="lazy"
       {% endif %}
-      onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
+      onerror="this.onerror=null; this.parentElement.querySelectorAll('source').forEach(function(source) { source.remove(); });"
     >
   </picture>
 

@@ -9,6 +9,11 @@ on:
       - "assets/**"
       - "_sass/**"
       - "_scripts/**"
+      - "_plugins/**"
+      - "bin/check-site.py"
+      - "bin/test-bibsearch.cjs"
+      - "robots.txt"
+      - "package*.json"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -38,6 +43,11 @@ on:
       - "assets/**"
       - "_sass/**"
       - "_scripts/**"
+      - "_plugins/**"
+      - "bin/check-site.py"
+      - "bin/test-bibsearch.cjs"
+      - "robots.txt"
+      - "package*.json"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -74,30 +84,30 @@ jobs:
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
+          ruby-version: "3.3.12"
           bundler-cache: true
       - name: Setup Python 🐍
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-          cache: "pip" # caching pip dependencies
-      - name: Update _config.yml ⚙️
-        uses: fjogeleit/yaml-update-action@main
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          commitChange: false
-          valueFile: "_config.yml"
-          propertyPath: "giscus.repo"
-          value: ${{ github.repository }}
+          node-version: "22"
+          cache: npm
       - name: Install and Build 🔧
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
-          pip3 install --upgrade nbconvert
           export JEKYLL_ENV=production
           bundle exec jekyll build
       - name: Purge unused CSS 🧹
         run: |
-          npm install -g purgecss
-          purgecss -c purgecss.config.js
+          npm ci
+          npx purgecss -c purgecss.config.js
+      - name: Validate site before publishing
+        run: |
+          node bin/test-bibsearch.cjs
+          python3 bin/check-site.py _site
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4

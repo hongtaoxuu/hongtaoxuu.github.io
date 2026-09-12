@@ -26,9 +26,10 @@ layout: default
       rounded' %}
           {% endif %}
           {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
+      30vw, 95vw{% endcapture %}
           {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image_alt
+            width=page.profile.image_width height=page.profile.image_height
             cache_bust=true
           %}
         {% endif %}
@@ -72,7 +73,10 @@ layout: default
     <!-- Honors and service (hardcoded; edit items inline here) -->
     <h2>honors and service</h2>
     <ul>
-      <li><strong>2026</strong> &nbsp;·&nbsp; President Award of the Chinese Academy of Sciences &mdash; Excellence <small>(top 0.6%)</small><br><small class="text-muted">the highest honor for graduate students in CAS</small></li>
+      <li>
+        <strong>2026</strong> &nbsp;·&nbsp; President Award of the Chinese Academy of Sciences &mdash; Excellence <small>(top 0.6%)</small><br>
+        <small class="text-muted">the highest honor for graduate students in CAS</small>
+      </li>
       <li><strong>2025</strong> &nbsp;·&nbsp; National Scholarship for Doctoral Students</li>
       <li><strong>Academic Service</strong> &nbsp;·&nbsp; Reviewer for ICML'26, NeurIPS'26</li>
     </ul>
@@ -82,7 +86,9 @@ layout: default
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
 
-        <div class="contact-note">{{ site.contact_note }}</div>
+        <div class="contact-note">
+          <a href="mailto:{{ site.data.socials.email | encode_email }}">{{ site.data.socials.email }}</a>
+        </div>
       </div>
     {% endif %}
 

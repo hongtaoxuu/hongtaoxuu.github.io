@@ -7,26 +7,26 @@
 
 ## 1. 项目结构速览
 
-| 路径 | 作用 |
-| --- | --- |
-| `_config.yml` | 全站总配置（名字、URL、导航、主题、Jekyll 插件、scholar 设置、Jekyll exclude 列表等）。**几乎所有“开关”都在这里。** |
-| `_pages/` | 每个一级页面的入口 Markdown。当前实际启用进导航栏的只有 `about.md`（首页 `/`）和 `publications.md`。其余如 `news.md`、`404.md` 仍存在但不在 nav；`cv.md` / `blog.md` / `books.md` / `dropdown.md` / `repositories.md` / `projects.md` / `profiles.md` / `teaching.md` 都已在 `_config.yml` 的 `exclude` 中关闭。 |
-| `_bibliography/papers.bib` | **论文数据库**，BibTeX 格式。`/publications/` 页面 和 about 首页的“selected publications” 都从这里生成。 |
-| `_bibliography/backup.bib` | 论文备份/草稿，已在 `_config.yml` exclude 中关闭，不会构建。 |
-| `_news/` | **news 条目**，一个 `.md` 文件 = 一条 news。`/news/` 页面与 about 首页公告条会自动列出。 |
-| `_data/experience.yml` | **经历数据**（education experience / industry experience 卡片）。被 about 页通过 `_includes/experience.liquid` 渲染成一个 section。注意：奖项 / 审稿服务**不在这个文件**，见 §2.5。 |
-| `_data/` 其他 | `socials.yml`（社交图标）、`coauthors.yml`、`venues.yml`、`repositories.yml`、`cv.yml`（Einstein 示例 CV，未启用）。 |
-| `_includes/` | 公共片段（`header.liquid`、`footer.liquid`、`news.liquid`、`selected_papers.liquid`、`experience.liquid`、`social.liquid` 等）。 |
-| `_layouts/` | 页面模板（`about.liquid` 即首页骨架，依次渲染 about 正文 / news / experience / selected publications / honors and service；`bib.liquid` 渲染论文条目；`page.liquid`、`post.liquid` 等）。 |
-| `_posts/` | 博客文章（如果启用 blog 才会显示在 `/blog/`）。当前主要是主题自带示例文章。 |
-| `_projects/` `_books/` | 项目卡片 / 书架；当前 `_pages/projects.md` 已 exclude，不会显示，但文件仍保留可随时启用。 |
-| `_sass/`、`assets/css/` | 样式表（SCSS 编译后即站点 CSS）。 |
-| `_plugins/` | 自定义 Ruby 插件（论文 details、Google Scholar 引用数、Inspire HEP 等）。 |
-| `_scripts/` | 站点构建期会引用的脚本片段。 |
-| `assets/img/` | **所有图片**。头像、论文预览图（`publication_preview/`）、书封面（`book_covers/`）都在此。 |
-| `assets/pdf/` | 论文 PDF 实体文件。BibTeX 中 `pdf={xxx.pdf}` 字段引用的就是这里。 |
-| `assets/{audio,video,json,jupyter,plotly,html}` | 各种富媒体资源。 |
-| `Gemfile` / `bin/deploy` / `Dockerfile` 等 | 本地预览 / 手动部署相关，**日常更新不用碰**。 |
+| 路径                                            | 作用                                                                                                                                                                                                                                                                                                             |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_config.yml`                                   | 全站总配置（名字、URL、导航、主题、Jekyll 插件、scholar 设置、Jekyll exclude 列表等）。**几乎所有“开关”都在这里。**                                                                                                                                                                                              |
+| `_pages/`                                       | 每个一级页面的入口 Markdown。当前实际启用进导航栏的只有 `about.md`（首页 `/`）和 `publications.md`。其余如 `news.md`、`404.md` 仍存在但不在 nav；`cv.md` / `blog.md` / `books.md` / `dropdown.md` / `repositories.md` / `projects.md` / `profiles.md` / `teaching.md` 都已在 `_config.yml` 的 `exclude` 中关闭。 |
+| `_bibliography/papers.bib`                      | **论文数据库**，BibTeX 格式。`/publications/` 页面 和 about 首页的“selected publications” 都从这里生成。                                                                                                                                                                                                         |
+| `_bibliography/backup.bib`                      | 论文备份/草稿，已在 `_config.yml` exclude 中关闭，不会构建。                                                                                                                                                                                                                                                     |
+| `_news/`                                        | **news 条目**，一个 `.md` 文件 = 一条 news。`/news/` 页面与 about 首页公告条会自动列出。                                                                                                                                                                                                                         |
+| `_data/experience.yml`                          | **经历数据**（education experience / industry experience 卡片）。被 about 页通过 `_includes/experience.liquid` 渲染成一个 section。注意：奖项 / 审稿服务**不在这个文件**，见 §2.5。                                                                                                                              |
+| `_data/` 其他                                   | `socials.yml`（社交图标）、`coauthors.yml`、`venues.yml`、`repositories.yml`、`cv.yml`（Einstein 示例 CV，未启用）。                                                                                                                                                                                             |
+| `_includes/`                                    | 公共片段（`header.liquid`、`footer.liquid`、`news.liquid`、`selected_papers.liquid`、`experience.liquid`、`social.liquid` 等）。                                                                                                                                                                                 |
+| `_layouts/`                                     | 页面模板（`about.liquid` 即首页骨架，依次渲染 about 正文 / news / experience / selected publications / honors and service；`bib.liquid` 渲染论文条目；`page.liquid`、`post.liquid` 等）。                                                                                                                        |
+| `_posts/`                                       | 主题示例文章，整个目录已从生产构建排除。仅隐藏博客入口不会停止文章发布。                                                                                                                                                                                                                                         |
+| `_projects/` `_books/`                          | 项目卡片 / 书架；当前 `_pages/projects.md` 已 exclude，不会显示，但文件仍保留可随时启用。                                                                                                                                                                                                                        |
+| `_sass/`、`assets/css/`                         | 样式表（SCSS 编译后即站点 CSS）。                                                                                                                                                                                                                                                                                |
+| `_plugins/`                                     | 自定义 Ruby 插件（论文 details、Google Scholar 引用数、Inspire HEP 等）。                                                                                                                                                                                                                                        |
+| `_scripts/`                                     | 站点构建期会引用的脚本片段。                                                                                                                                                                                                                                                                                     |
+| `assets/img/`                                   | **所有图片**。头像、论文预览图（`publication_preview/`）、书封面（`book_covers/`）都在此。                                                                                                                                                                                                                       |
+| `assets/pdf/`                                   | 论文 PDF 实体文件。BibTeX 中 `pdf={xxx.pdf}` 字段引用的就是这里。                                                                                                                                                                                                                                                |
+| `assets/{audio,video,json,jupyter,plotly,html}` | 各种富媒体资源。                                                                                                                                                                                                                                                                                                 |
+| `Gemfile` / `bin/deploy` / `Dockerfile` 等      | 本地预览 / 手动部署相关，**日常更新不用碰**。                                                                                                                                                                                                                                                                    |
 
 > 发布方式：改完文件 `git push` 到 `main` 分支后，GitHub Pages 会自动构建上线，通常 1–2 分钟生效，不需要本地跑 Jekyll。
 
@@ -94,8 +94,8 @@ One Paper is accepted by XXX'26! See you in YYY 🇨🇳!
   ```yaml
   announcements:
     enabled: true
-    scrollable: true   # 超过 limit 会出现滚动条
-    limit: 5           # 显示多少条；留空显示全部
+    scrollable: true # 超过 limit 会出现滚动条
+    limit: 5 # 显示多少条；留空显示全部
   ```
 
   控制；`/news/` 页面始终列出全部。
@@ -116,8 +116,8 @@ One Paper is accepted by XXX'26! See you in YYY 🇨🇳!
    ```yaml
    profile:
      align: right
-     image: hongtao_2026.jpg     # ← 改这里，文件名相对 assets/img/
-     image_circular: false       # true 会裁成圆形
+     image: hongtao_2026.jpg # ← 改这里，文件名相对 assets/img/
+     image_circular: false # true 会裁成圆形
      more_info: >
        <p>PhD student</p>
        <p>Haidian, Beijing, China</p>
@@ -135,7 +135,7 @@ One Paper is accepted by XXX'26! See you in YYY 🇨🇳!
 `_config.yml` 中：
 
 ```yaml
-icon: 🍑   # 直接用 emoji 当 favicon
+icon: 🍑 # 直接用 emoji 当 favicon
 # 或者改成 assets/img/ 下的文件名，例如 icon: favicon.png
 ```
 
@@ -150,13 +150,13 @@ icon: 🍑   # 直接用 emoji 当 favicon
 **编辑方法**：直接修改 `_data/experience.yml`，文件结构为顶层一个数组，每个元素是一张卡片：
 
 ```yaml
-- title: Education                # 卡片标题（h3）
-  type: time_table                # 渲染方式；time_table 走 _includes/cv/time_table.liquid
+- title: Education # 卡片标题（h3）
+  type: time_table # 渲染方式；time_table 走 _includes/cv/time_table.liquid
   contents:
     - title: Ph.D. Candidate in Computer Science
       institution: <a href="https://www.ict.ac.cn/" target="_blank">ICT, CAS</a> & UCAS
       year: 2024.09 - now
-      description:                # 可选；支持 HTML
+      description: # 可选；支持 HTML
         - Joint Ph.D. program ...
         - "Advisor: <a href='...'>Prof. Weile Jia</a>."
 ```
@@ -164,7 +164,7 @@ icon: 🍑   # 直接用 emoji 当 favicon
 **新增一类经历**（例如以后想加一张 "Teaching" 或 "Selected Talks" 卡片）：在 `_data/experience.yml` 末尾追加一个新的顶层条目即可：
 
 ```yaml
-- title: selected talks       # 卡片标题，统一用小写以和现有两张卡风格一致
+- title: selected talks # 卡片标题，统一用小写以和现有两张卡风格一致
   type: time_table
   contents:
     - title: Talk title here
@@ -198,7 +198,7 @@ icon: 🍑   # 直接用 emoji 当 favicon
 
 - 奖项：`<li><strong>年份</strong> &nbsp;·&nbsp; 奖项全称 <small>(可选的简短补充)</small></li>`
 - 服务：`<li><strong>Academic Service</strong> &nbsp;·&nbsp; 描述</li>` （已有那条直接续写新会议即可，例如 `Reviewer for ICML'26, NeurIPS'26, ICLR'27`）
-- ` · ` 用 `&nbsp;·&nbsp;` 写出来；破折号用 `&mdash;`（即 `—`）；额外说明（如 "top 0.7%"）用 `<small>...</small>` 包成小字。
+- `·` 用 `&nbsp;·&nbsp;` 写出来；破折号用 `&mdash;`（即 `—`）；额外说明（如 "top 0.7%"）用 `<small>...</small>` 包成小字。
 
 **临时隐藏整段**：把这 6 行包一个注释 `{% comment %} ... {% endcomment %}` 即可，或者直接删掉。
 
@@ -219,10 +219,18 @@ icon: 🍑   # 直接用 emoji 当 favicon
 
 ### 以后想开博客？
 
-1. 把 `_posts/` 目录下所有 `2015-*` ~ `2025-*` 的**主题示例文章**删掉（除非你想保留作为格式参考）。
-2. 写你自己的博文：在 `_posts/` 新建 `YYYY-MM-DD-标题.md`，frontmatter 参考剩余的示例文件即可。
-3. 在 `_config.yml` 的 `exclude:` 列表里删掉 `- _pages/blog.md` 这一行。
-4. （可选）如果想保留导航栏右侧的 `submenus` 下拉，再删掉 `- _pages/dropdown.md` 和 `- _pages/books.md`。
+1. 将要保留的主题示例移出 `_posts/` 并排除其新目录；不要让示例随个人博客发布。
+2. 在 `_posts/` 新建个人文章 `YYYY-MM-DD-标题.md`。
+3. 从 `_config.yml` 的 `exclude:` 中移除 `_posts/` 和 `_pages/blog.md`；按需恢复 pagination、posts archives、posts_in_search 和 RSS 图标。
+4. 同步调整 `bin/check-site.py` 中禁止发布 blog 目录的断言，再构建检查 sitemap、feed 和搜索索引。项目／书籍只有实际发布后才进入搜索。
+
+### 构建与发布检查
+
+- Ruby 版本与 CI 保持一致（3.3.12），安装 ImageMagick 后运行 `bundle install`、`npm ci`。
+- `JEKYLL_ENV=production bundle exec jekyll build`，接着运行 `npx purgecss -c purgecss.config.js`、`node bin/test-bibsearch.cjs`、`python3 bin/check-site.py _site`。
+- CI 在发布前检查本地页面、图片、PDF、搜索目标和展开按钮关联，失败时停止部署。
+- `temp/` 已从 Jekyll 构建排除，不提交临时报告或验证产物。
+- 主联系邮箱在 `_data/socials.yml` 维护，简介和页底文字均引用它。
 
 ---
 

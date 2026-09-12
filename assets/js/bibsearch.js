@@ -1,8 +1,12 @@
 import { highlightSearchTerm } from "./highlight-search-term.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+  const input = document.getElementById("bibsearch");
+  if (!input) return;
+  let timeoutId;
   // actual bibsearch logic
   const filterItems = (searchTerm) => {
+    searchTerm = searchTerm.trim().toLowerCase();
     document.querySelectorAll(".bibliography, .unloaded").forEach((element) => element.classList.remove("unloaded"));
 
     // highlight-search-term
@@ -51,17 +55,22 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const updateInputField = () => {
-    const hashValue = decodeURIComponent(window.location.hash.substring(1)); // Remove the '#' character
-    document.getElementById("bibsearch").value = hashValue;
+    clearTimeout(timeoutId);
+    let hashValue = window.location.hash.substring(1);
+    try {
+      hashValue = decodeURIComponent(hashValue);
+    } catch {
+      // Treat malformed percent escapes as literal search text.
+    }
+    input.value = hashValue;
     filterItems(hashValue);
   };
 
   // Sensitive search. Only start searching if there's been no input for 300 ms
-  let timeoutId;
-  document.getElementById("bibsearch").addEventListener("input", function () {
+  input.addEventListener("input", function () {
     clearTimeout(timeoutId); // Clear the previous timeout
     const searchTerm = this.value.toLowerCase();
-    timeoutId = setTimeout(filterItems(searchTerm), 300);
+    timeoutId = setTimeout(() => filterItems(searchTerm), 300);
   });
 
   window.addEventListener("hashchange", updateInputField); // Update the filter when the hash changes

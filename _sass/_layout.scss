@@ -35,7 +35,22 @@ body.sticky-bottom-footer {
 .profile {
   img {
     width: 100%;
+    height: auto;
   }
+}
+
+.job-market {
+  color: var(--global-theme-color);
+}
+
+.experience .experience-heading {
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.experience .list-group-item {
+  background-color: transparent;
+  border-color: var(--global-divider-color);
 }
 
 // TODO: redefine content layout.
