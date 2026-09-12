@@ -18,7 +18,7 @@ profile:
     <p>Beijing, China</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: true # includes the contact email at the bottom of the page
 
 experience:
   enabled: true # includes the experience section (data from `_data/experience.yml`)
