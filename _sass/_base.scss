@@ -732,6 +732,8 @@ footer.sticky-bottom {
       .preview {
         width: 100%;
         height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: contain;
         // Paper figures use dark ink, including any with transparent backgrounds.
         background-color: #fff;
       }
@@ -1134,6 +1136,12 @@ nav[data-toggle="toc"] {
 
 .unloaded {
   display: none !important;
+}
+
+img.preview {
+  // Zoom clones are outside .publications; preserve the figure's proportions there too.
+  object-fit: contain;
+  background-color: #fff;
 }
 
 .medium-zoom-overlay,
