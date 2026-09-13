@@ -1,0 +1,138 @@
+// Homepage-only atmosphere. Keep all decoration behind the document, with no hit targets.
+body.home-starfield {
+  isolation: isolate;
+  --sky-star: 81, 98, 148;
+  --sky-blue: 108, 153, 205;
+  --sky-violet: 156, 132, 187;
+  --sky-strength: 0.6;
+}
+
+html[data-theme="dark"] body.home-starfield {
+  --sky-star: 210, 225, 255;
+  --sky-blue: 65, 109, 183;
+  --sky-violet: 112, 88, 163;
+  --sky-strength: 0.9;
+}
+
+.home-sky {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.home-sky-glow,
+.home-sky-stars {
+  position: absolute;
+  inset: 0;
+}
+
+.home-sky-glow {
+  background: radial-gradient(ellipse at 0% 20%, rgba(var(--sky-blue), 0.12), transparent 42%),
+    radial-gradient(ellipse at 100% 75%, rgba(var(--sky-violet), 0.1), transparent 40%);
+}
+
+.home-sky-stars {
+  opacity: var(--sky-strength);
+  // Fade the stars beneath the reading column, leaving the margins more luminous.
+  mask-image: linear-gradient(90deg, #000 0%, #000 8%, rgba(0, 0, 0, 0.06) 28%, rgba(0, 0, 0, 0.06) 72%, #000 92%, #000 100%);
+}
+
+.home-sky-star {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: rgb(var(--sky-star));
+  opacity: 0.55;
+  animation: home-star-breathe var(--duration) ease-in-out var(--delay) infinite alternate;
+
+  &:nth-child(7n) {
+    box-shadow: 0 0 5px 1px rgba(var(--sky-star), 0.3);
+  }
+
+  // A few tiny diffraction spikes give the field character without adding large particles.
+  &:nth-child(19n)::before,
+  &:nth-child(19n)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--sky-star), 0.65), transparent);
+    transform: translate(-50%, -50%);
+  }
+
+  &:nth-child(19n)::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.home-starfield .personal-mottos {
+  position: relative;
+  isolation: isolate;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  border-top: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--sky-star), 0.3), transparent);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at 9% 32%, rgba(var(--sky-star), 0.7) 0.7px, transparent 1.5px),
+      radial-gradient(circle at 17% 70%, rgba(var(--sky-star), 0.4) 0.6px, transparent 1.3px),
+      radial-gradient(circle at 85% 24%, rgba(var(--sky-star), 0.65) 0.9px, transparent 1.8px),
+      radial-gradient(circle at 94% 61%, rgba(var(--sky-star), 0.5) 0.6px, transparent 1.3px),
+      radial-gradient(ellipse at 50% 60%, rgba(var(--sky-blue), 0.065), transparent 68%);
+  }
+}
+
+@keyframes home-star-breathe {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 575px) {
+  .home-sky-stars {
+    mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.04) 16%, rgba(0, 0, 0, 0.04) 84%, #000);
+  }
+
+  .home-sky-star:nth-child(n + 43) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-sky-star {
+    animation: none;
+  }
+}
+
+@media print {
+  .home-sky,
+  .home-starfield .personal-mottos::before,
+  .home-starfield .personal-mottos::after {
+    display: none;
+  }
+}

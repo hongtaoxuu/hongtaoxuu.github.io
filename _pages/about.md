@@ -15,6 +15,7 @@ profile:
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes the contact email at the bottom of the page
+starfield: true # subtle CSS stars; set false to disable the homepage atmosphere
 
 experience:
   enabled: true # includes the experience section (data from `_data/experience.yml`)
