@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 # subtitle: Ph.D student, University of Chinese Academy of Sciences (UCAS), Institute of Computing Technology (ICT).
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
@@ -14,7 +14,7 @@ profile:
   image_circular: false # crops the image to make it circular
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes the contact email at the bottom of the page
+social: true # includes text contact links below the biography
 starfield: true # subtle CSS stars; set false to disable the homepage atmosphere
 
 experience:
@@ -37,7 +37,7 @@ latest_posts:
 
 His research interests focus on the intersection of **machine learning systems**, **artificial intelligence** and **scientific computing**, with a particular interest in algorithm-system co-design.
 
-He is expected to graduate in 2027 and is <em><strong class="job-market">currently on the job market</strong></em>. He is always open to collaborations and full-time opportunities — please feel free to reach out to him via [{{ site.data.socials.email }}](mailto:{{ site.data.socials.email }}).
+He is expected to graduate in 2027 and is **currently on the job market**. He is always open to collaborations and full-time opportunities.
 
 <!-- Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
