@@ -2,15 +2,23 @@
 <div class="home-sky" aria-hidden="true">
   <div class="home-sky-glow"></div>
   <div class="home-sky-stars">
-    {% for i in (1..84) %}
-      {% assign x = i | times: 7919 | modulo: 997 | divided_by: 10.0 %}
-      {% assign y = i | times: 6271 | modulo: 991 | divided_by: 10.0 %}
-      {% assign size = i | modulo: 3 | times: 0.4 | plus: 0.8 %}
-      {% assign duration = i | modulo: 7 | plus: 6 %}
+    {% for i in (1..220) %}
+      {% assign seed = i | times: i | times: 73 %}
+      {% assign x = i | times: 7919 | plus: seed | modulo: 997 | divided_by: 10.0 %}
+      {% assign y = i | times: 6271 | plus: seed | modulo: 991 | divided_by: 10.0 %}
+      {% assign group = i | modulo: 5 %}
+      {% assign side = i | modulo: 2 %}
+      {% if group < 3 %}
+        {% assign x = x | times: 0.22 %}
+        {% if side == 1 %}{% assign x = x | plus: 78 %}{% endif %}
+      {% endif %}
+      {% assign size = i | modulo: 5 | times: 0.25 | plus: 1.0 %}
+      {% assign opacity = i | modulo: 5 | times: 0.08 | plus: 0.5 %}
+      {% assign duration = i | modulo: 7 | plus: 7 %}
       {% assign delay = i | modulo: 13 | times: -1 %}
       <span
         class="home-sky-star"
-        style="--x: {{ x }}%; --y: {{ y }}%; --size: {{ size }}px; --duration: {{ duration }}s; --delay: {{ delay }}s;"
+        style="--x: {{ x }}%; --y: {{ y }}%; --size: {{ size }}px; --opacity: {{ opacity }}; --duration: {{ duration }}s; --delay: {{ delay }}s;"
       ></span>
     {% endfor %}
   </div>
