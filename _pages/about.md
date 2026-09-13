@@ -1,6 +1,6 @@
 ---
 layout: about
-title: About
+title: Home
 permalink: /
 # subtitle: Ph.D student, University of Chinese Academy of Sciences (UCAS), Institute of Computing Technology (ICT).
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
@@ -34,7 +34,7 @@ latest_posts:
 
 <!-- In the same year, he was admitted to pursue his master's study without entrance examination at the [Institute of Computing Technology (ICT)](https://www.ict.ac.cn/), [Chinese Academy of Sciences (CAS)](https://www.cas.cn/). In December 2024, he was admitted to pursue his doctor's degree in a joint PhD program with [Institute of Computing Technology, CAS](https://www.ict.ac.cn/) and [School of Advanced Interdisciplinary Sciences, UCAS](https://www.ucas.ac.cn/). -->
 
-His research interests focus on the intersection of **machine learning systems**, **artificial intelligence** and **scientific computing**, with a particular interest in algorithm-system co-design.
+His research focuses on **LLM pre-training infrastructure**, **high-performance computing (HPC)**, and **AI for Science**. He takes an algorithm–system co-design approach to building efficient and scalable training systems.
 
 He is expected to graduate in 2027 and is **currently on the job market**. He is always open to collaborations and full-time opportunities.
 
