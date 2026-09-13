@@ -1,4 +1,4 @@
-{% comment %}Deterministic positions keep the sky stable across builds; no runtime script is needed.{% endcomment %}
+{% comment %}Deterministic star positions; the small meteor script schedules occasional shooting stars.{% endcomment %}
 <div class="home-sky" aria-hidden="true">
   <div class="home-sky-glow"></div>
   <div class="home-sky-stars">
@@ -14,12 +14,15 @@
       {% endif %}
       {% assign size = i | modulo: 5 | times: 0.25 | plus: 1.0 %}
       {% assign opacity = i | modulo: 5 | times: 0.08 | plus: 0.5 %}
-      {% assign duration = i | modulo: 7 | plus: 7 %}
+      {% assign duration = i | modulo: 5 | plus: 3 %}
       {% assign delay = i | modulo: 13 | times: -1 %}
       <span
         class="home-sky-star"
         style="--x: {{ x }}%; --y: {{ y }}%; --size: {{ size }}px; --opacity: {{ opacity }}; --duration: {{ duration }}s; --delay: {{ delay }}s;"
       ></span>
     {% endfor %}
+  </div>
+  <div class="home-sky-meteors">
+    <span class="home-sky-meteor"><span class="home-sky-meteor-trail"></span></span>
   </div>
 </div>
