@@ -20,7 +20,7 @@ experience:
   enabled: true # includes the experience section (data from `_data/experience.yml`)
 
 announcements:
-  enabled: true # includes a list of news items
+  enabled: false # hide homepage news; historical entries remain available at /news/
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
