@@ -16,8 +16,8 @@
   </head>
 
   <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}{% if page.starfield %} home-starfield{% endif %}">
-    {% if page.starfield %}
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}{% if site.enable_starfield and page.starfield != false %} starfield-enabled{% endif %}">
+    {% if site.enable_starfield and page.starfield != false %}
       {% include starfield.liquid %}
     {% endif %}
     <!-- Header -->
