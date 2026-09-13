@@ -21,6 +21,17 @@
         style="--x: {{ x }}%; --y: {{ y }}%; --size: {{ size }}px; --opacity: {{ opacity }}; --duration: {{ duration }}s; --delay: {{ delay }}s;"
       ></span>
     {% endfor %}
+    {% comment %}A quiet, static layer fills the reading column without adding bright stars or animation.{% endcomment %}
+    {% for i in (1..140) %}
+      {% assign seed = i | times: i | times: 97 %}
+      {% assign x = i | times: 3571 | plus: seed | modulo: 997 | divided_by: 997.0 | times: 56 | plus: 22 %}
+      {% assign y = i | times: 4051 | plus: seed | modulo: 991 | divided_by: 10.0 %}
+      {% assign size = i | modulo: 3 | times: 0.25 | plus: 1.0 %}
+      <span
+        class="home-sky-dust{% if i > 60 %} home-sky-dust-desktop{% endif %}"
+        style="--x: {{ x }}%; --y: {{ y }}%; --size: {{ size }}px;"
+      ></span>
+    {% endfor %}
   </div>
   <div class="home-sky-meteors">
     <span class="home-sky-meteor"><span class="home-sky-meteor-trail"></span></span>

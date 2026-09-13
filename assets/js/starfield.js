@@ -31,7 +31,7 @@
   const schedule = () => {
     window.clearTimeout(timer);
     if (!canAnimate()) return;
-    timer = window.setTimeout(shoot, mobile.matches ? random(25000, 45000) : random(15000, 30000));
+    timer = window.setTimeout(shoot, mobile.matches ? random(10000, 16000) : random(6000, 12000));
   };
   const shoot = () => {
     if (!canAnimate()) return;
@@ -45,8 +45,8 @@
       dx: `${path.dx}px`,
       dy: `${path.dy}px`,
       angle: `${(Math.atan2(path.dy, path.dx) * 180) / Math.PI}deg`,
-      length: `${mobile.matches ? random(35, 55) : random(70, 115)}px`,
-      duration: `${random(0.8, 1.4)}s`,
+      length: `${mobile.matches ? random(70, 100) : random(140, 210)}px`,
+      duration: `${random(1.0, 1.5)}s`,
     };
     for (const [key, value] of Object.entries(variables)) meteor.style.setProperty(`--meteor-${key}`, value);
     meteor.classList.add("is-active");
