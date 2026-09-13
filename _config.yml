@@ -9,9 +9,7 @@ last_name: Xu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Hongtao Xu, PhD candidate at UCAS. Research in machine learning systems,
   long-context LLM training, and scientific computing.
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+footer_text: ""
 keywords: Hongtao Xu, machine learning systems, LLM training, scientific computing
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🍑 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
