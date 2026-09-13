@@ -15,12 +15,20 @@
     { x: 98, y: 22, dx: -95, dy: 175 },
     { x: 10, y: 57, dx: -85, dy: 135 },
     { x: 97, y: 61, dx: -110, dy: 155 },
+    { x: 42, y: 12, dx: -135, dy: 125 },
+    { x: 66, y: 27, dx: -150, dy: 140 },
+    { x: 78, y: 48, dx: -160, dy: 125 },
+    { x: 56, y: 63, dx: -145, dy: 130 },
   ];
   const mobilePaths = [
     { x: 8, y: 13, dx: -22, dy: 115 },
     { x: 98, y: 25, dx: -25, dy: 135 },
     { x: 8, y: 60, dx: -20, dy: 105 },
     { x: 98, y: 56, dx: -25, dy: 120 },
+    { x: 44, y: 14, dx: -55, dy: 100 },
+    { x: 68, y: 28, dx: -65, dy: 110 },
+    { x: 78, y: 49, dx: -70, dy: 105 },
+    { x: 56, y: 61, dx: -60, dy: 100 },
   ];
 
   const canAnimate = () => !document.hidden && !reducedMotion.matches;
@@ -46,7 +54,7 @@
       dy: `${path.dy}px`,
       angle: `${(Math.atan2(path.dy, path.dx) * 180) / Math.PI}deg`,
       length: `${mobile.matches ? random(70, 100) : random(140, 210)}px`,
-      duration: `${random(1.0, 1.5)}s`,
+      duration: `${random(1.7, 2.3)}s`,
     };
     for (const [key, value] of Object.entries(variables)) meteor.style.setProperty(`--meteor-${key}`, value);
     meteor.classList.add("is-active");

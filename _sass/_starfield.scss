@@ -55,7 +55,7 @@ html[data-theme="dark"] body.starfield-enabled {
 
 .home-sky-meteors {
   // Keep any portion of a trail that reaches the reading column subdued.
-  mask-image: linear-gradient(90deg, #000 5%, rgba(0, 0, 0, 0.12) 28%, rgba(0, 0, 0, 0.12) 72%, #000 95%);
+  mask-image: linear-gradient(90deg, #000 5%, rgba(0, 0, 0, 0.3) 28%, rgba(0, 0, 0, 0.3) 72%, #000 95%);
 }
 
 .home-sky-meteor {
@@ -67,7 +67,14 @@ html[data-theme="dark"] body.starfield-enabled {
   opacity: 0;
 
   &.is-active {
-    animation: home-meteor-flight var(--meteor-duration) linear;
+    // Keep travel steady; ease the light envelope independently.
+    animation:
+      home-meteor-flight var(--meteor-duration) linear,
+      home-meteor-fade var(--meteor-duration) ease-in-out;
+  }
+
+  &.is-active .home-sky-meteor-trail {
+    animation: home-meteor-tail var(--meteor-duration) ease-in-out;
   }
 
   &::after {
@@ -91,22 +98,43 @@ html[data-theme="dark"] body.starfield-enabled {
   height: 1.5px;
   transform-origin: right center;
   transform: rotate(var(--meteor-angle));
-  background: linear-gradient(90deg, transparent, rgba(var(--sky-star), 0.25) 55%, rgb(var(--sky-star)));
+  background: linear-gradient(90deg, transparent, rgba(var(--sky-star), 0.08) 25%, rgba(var(--sky-star), 0.3) 65%, rgb(var(--sky-star)));
   border-radius: 50%;
 }
 
 @keyframes home-meteor-flight {
   0% {
-    opacity: 0;
     transform: translate(0, 0);
   }
-  12%,
-  65% {
-    opacity: 0.9;
+  100% {
+    transform: translate(var(--meteor-dx), var(--meteor-dy));
   }
+}
+
+@keyframes home-meteor-fade {
+  0%,
   100% {
     opacity: 0;
-    transform: translate(var(--meteor-dx), var(--meteor-dy));
+  }
+  25%,
+  60% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes home-meteor-tail {
+  0% {
+    transform: rotate(var(--meteor-angle)) scaleX(0.2);
+    opacity: 0;
+  }
+  30%,
+  65% {
+    transform: rotate(var(--meteor-angle)) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--meteor-angle)) scaleX(0.55);
+    opacity: 0;
   }
 }
 
@@ -210,7 +238,7 @@ html[data-theme="dark"] body.starfield-enabled {
 
 @media (max-width: 575px) {
   .home-sky-meteors {
-    mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.1) 18%, rgba(0, 0, 0, 0.1) 82%, #000);
+    mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.24) 18%, rgba(0, 0, 0, 0.24) 82%, #000);
   }
 
   .home-sky-stars {
