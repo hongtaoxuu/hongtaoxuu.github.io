@@ -29,7 +29,7 @@ layout: default
       30vw, 95vw{% endcapture %}
           {%
             include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image_alt
-            width=page.profile.image_width height=page.profile.image_height
+            width=page.profile.image_width height=page.profile.image_height caption=page.profile.caption
             cache_bust=true
           %}
         {% endif %}

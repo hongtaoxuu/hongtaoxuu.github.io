@@ -7,4 +7,7 @@
   </figure>
   <p class="motto-values">{{ site.data.mottos.values | escape }}</p>
   <p class="motto-meaning">{{ site.data.mottos.meaning | escape }}</p>
+  {% if site.data.mottos.note_zh %}
+    <p class="motto-note">{{ site.data.mottos.note_zh | escape }}</p>
+  {% endif %}
 </section>

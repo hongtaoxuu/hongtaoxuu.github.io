@@ -7,10 +7,16 @@ permalink: /
 
 profile:
   align: right
-  image: hongtao_life.JPG
-  image_alt: Hongtao Xu
-  image_width: 3464
-  image_height: 3024
+  # Previous photo kept for easy restoration:
+  # image: hongtao_life.JPG
+  # image_alt: Hongtao Xu
+  # image_width: 3464
+  # image_height: 3024
+  image: hongtao-yanqi-bridge-202209.jpg
+  image_alt: Hongtao Xu at UCAS Bridge, Yanqi Lake Campus, in September 2022
+  image_width: 1400
+  image_height: 1867
+  caption: "UCAS Bridge, Yanqi Lake Campus<br>September 2022"
   image_circular: false # crops the image to make it circular
 
 selected_papers: true # includes a list of papers marked as "selected={true}"

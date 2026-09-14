@@ -37,6 +37,14 @@ body.sticky-bottom-footer {
     width: 100%;
     height: auto;
   }
+
+  figcaption {
+    margin-top: 0.6rem;
+    color: var(--global-text-color-light);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    text-align: center;
+  }
 }
 
 .about-page {
@@ -133,6 +141,13 @@ body.sticky-bottom-footer {
 
   .motto-meaning {
     margin-bottom: 0;
+  }
+
+  .motto-note {
+    margin: 1.5rem 0 0;
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 }
 
