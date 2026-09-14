@@ -58,6 +58,61 @@ body.sticky-bottom-footer {
   }
 }
 
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "heading photo" "summary photo";
+  column-gap: 2.5rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+
+  .post-header {
+    grid-area: heading;
+  }
+
+  .post-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .about-summary {
+    grid-area: summary;
+    min-width: 0;
+  }
+
+  .profile {
+    grid-area: photo;
+    width: 100%;
+    margin: 0;
+
+    figure {
+      margin: 0;
+    }
+  }
+
+  .about-biography p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-intro {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "heading" "photo" "summary";
+    row-gap: 1.25rem;
+
+    .post-title {
+      margin-bottom: 0;
+    }
+
+    .profile {
+      width: min(100%, 196px);
+      justify-self: center;
+    }
+  }
+}
+
 .profile-links {
   display: flex;
   flex-wrap: wrap;
